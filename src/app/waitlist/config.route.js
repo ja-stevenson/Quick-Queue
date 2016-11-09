@@ -9,7 +9,9 @@
   
   function configFunction($routeProvider) {
     $routeProvider.when('/waitlist', {
-      templateUrl: 'app/waitlist/waitList.html'
+      templateUrl: 'app/waitlist/waitList.html',
+      controller: 'WaitListController',
+      controllerAs: 'vm'
     });
   }
   

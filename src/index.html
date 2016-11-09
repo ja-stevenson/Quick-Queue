@@ -21,7 +21,19 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBZF2REvLrogXblGa6G0LXo8tX6A-QsvKg",
+            authDomain: "quick-queue.firebaseapp.com",
+            databaseURL: "https://quick-queue.firebaseio.com",
+            storageBucket: "quick-queue.appspot.com",
+            messagingSenderId: "112131796339"
+          };
+          firebase.initializeApp(config);
+        </script>
+        
         <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 
 <!--        main app module-->
