@@ -11,12 +11,22 @@
     var vm = this;
     
     var fireParties = firebase.database().ref('parties');
-    vm.parties = $firebaseArray(fireParties);
     
+    function Party() {
+      this.name = '';
+      this.phone = '';
+      this.size = '';
+      this.done = false;
+      this.notified = false;
+    }
+    
+    vm.newParty = new Party();
+    vm.parties = $firebaseArray(fireParties);
     vm.addParty = addParty;
     
     function addParty() {
-      vm.parties.$add('another');
+      vm.parties.$add(vm.newParty);
+      vm.newParty = new Party();
     }
   }
 })();
