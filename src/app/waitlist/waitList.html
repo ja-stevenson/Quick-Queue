@@ -25,13 +25,15 @@
 <!--      TODO: Checkbox to display party.done-->
     </td>
     <td>
-      
+      <div><strong>{{ party.name}} {{ party.size }} people</strong></div>
+      <div>{{ party.phone }}</div>
     </td>
     <td>
-      
+      <div>{{ party.notified ? 'Yes' : 'No' }}</div>
     </td>
     <td>
-      
+<!--      TODO: Button that sends a text message to the party-->
+<!--      TODO: Button that removes this party-->
     </td>
   </tr>
 </table>
