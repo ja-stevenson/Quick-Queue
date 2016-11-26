@@ -21,8 +21,8 @@
     
     function register(user) {
       return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password)
-        .then(function(user) {
-          console.log(user);
+        .then(function() {
+          vm.login(user);
         })
         .catch(function(error) {
           console.log(error);
