@@ -11,6 +11,7 @@
     var firebaseAuthObject = $firebaseAuth();
     
     var service = {
+      firebaseAuthObject: firebaseAuthObject,
       register: register,
       login: login,
       logout: logout,

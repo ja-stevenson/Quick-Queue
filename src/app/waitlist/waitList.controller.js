@@ -5,10 +5,13 @@
     .module('app.waitList')
     .controller('WaitListController', WaitListController);
   
-  WaitListController.$inject = ['textMessageService', 'partyService'];
+  WaitListController.$inject = ['partyService', 'textMessageService', 'user'];
   
-  function WaitListController(textMessageService, partyService) {
+  function WaitListController(partyService, textMessageService, user) {
     var vm = this;
+    
+    //Log user to console
+    console.log(user);
         
     vm.newParty = new partyService.Party();
     vm.parties = partyService.parties;
