@@ -11,7 +11,8 @@
     var firebaseAuthObject = $firebaseAuth();
     
     var service = {
-      register: register
+      register: register,
+      login: login
     };
     
     return service;
@@ -20,6 +21,10 @@
     
     function register(user) {
       return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password);
+    }
+    
+    function login(user) {
+      return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
     }
     
   }

@@ -5,9 +5,9 @@
     .module('app.auth')
     .controller('AuthController', AuthController);
   
-  AuthController.$inject = ['$location','$firebaseAuth'];
+  AuthController.$inject = ['$location', '$firebaseAuth', 'authService'];
   
-  function AuthController($location, $firebaseAuth) {
+  function AuthController($location, $firebaseAuth, authService) {
     var vm = this;
     var firebaseAuthObject = $firebaseAuth();
     
@@ -21,7 +21,7 @@
     vm.logout = logout;
     
     function register(user) {
-      return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password)
+      return authService.register(user)
         .then(function() {
           vm.login(user);
         })
@@ -31,7 +31,7 @@
     }
     
     function login(user) {
-      return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password)
+      return authService.login(user)
         .then(function(user) {
           console.log(user);
           $location.path('/waitlist');
