@@ -6,9 +6,23 @@
     .factory('partyService', partyService);
   
   function partyService() {
-    var service = {};
+    
+    var service = {
+      Party: Party
+    };
     
     return service;
+    
+    /////////////////
+    
+    function Party() {
+      this.name = '';
+      this.phone = '';
+      this.size = '';
+      this.done = false;
+      this.notified = false;
+    }
+    
   }
   
-})()
+})();

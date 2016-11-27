@@ -5,23 +5,15 @@
     .module('app.waitList')
     .controller('WaitListController', WaitListController);
   
-  WaitListController.$inject = ['$firebaseArray'];
+  WaitListController.$inject = ['$firebaseArray', 'partyService'];
   
-  function WaitListController($firebaseArray) {
+  function WaitListController($firebaseArray, partyService) {
     var vm = this;
     
     var fireParties = firebase.database().ref('parties');
     var fireTextMessages = firebase.database().ref('textMessages');
     
-    function Party() {
-      this.name = '';
-      this.phone = '';
-      this.size = '';
-      this.done = false;
-      this.notified = false;
-    }
-    
-    vm.newParty = new Party();
+    vm.newParty = new partyService.Party();
     vm.parties = $firebaseArray(fireParties);
     vm.addParty = addParty;
     vm.removeParty = removeParty;
@@ -30,7 +22,7 @@
     
     function addParty() {
       vm.parties.$add(vm.newParty);
-      vm.newParty = new Party();
+      vm.newParty = new partyService.Party();
     }
     
     function removeParty(party) {
