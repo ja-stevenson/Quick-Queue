@@ -9,6 +9,7 @@
     var root = firebase.database().ref();
     var service = {
       root: root,
+      users: root.child('users'),
       textMessages: root.child('textMessages')
     };
     
