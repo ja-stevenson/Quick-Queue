@@ -9,9 +9,12 @@
   
   function partyService($firebaseArray, firebaseDataService) {
     
+    var parties = null;
+    
     var service = {
       Party: Party,
-      getPartiesByUser: getPartiesByUser
+      getPartiesByUser: getPartiesByUser,
+      reset: reset
     };
     
     return service;
@@ -27,7 +30,18 @@
     }
     
     function getPartiesByUser(uid) {
-      return $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
+      if (!parties) {
+        parties = $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
+      }
+      return parties;
+    }
+    
+    function reset() {
+      //break connection established by firebase Array
+      if (parties) {
+        parties.$destroy();
+        parties = null;
+      }
     }
   }
   

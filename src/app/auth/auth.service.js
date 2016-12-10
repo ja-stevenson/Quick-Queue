@@ -5,9 +5,9 @@
     .module('app.auth')
     .factory('authService', authService);
   
-  authService.$inject = ['$firebaseAuth', 'firebaseDataService'];
+  authService.$inject = ['$firebaseAuth', 'firebaseDataService', 'partyService'];
   
-  function authService($firebaseAuth, firebaseDataService) {
+  function authService($firebaseAuth, firebaseDataService, partyService) {
     var firebaseAuthObject = $firebaseAuth();
     
     var service = {
@@ -32,6 +32,7 @@
     }
     
     function logout() {
+      partyService.reset();
       firebaseAuthObject.$signOut();
     }
     
